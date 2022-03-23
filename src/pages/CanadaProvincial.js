@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import Header from "../components/Header";
-
-const CanadaProvincial = () => {
-  return (
-    <div>
-      <Header />
-      <h1>TODO CANADA PROVINCIAL</h1>
-    </div>
-  );
-};
-
-export default CanadaProvincial;
-=======
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
@@ -87,4 +73,3 @@ const CanadaProvincial = () => {
 };
 
 export default CanadaProvincial;
->>>>>>> 1b4a7dfa64883af9b178e92330591a696c1593b2
