@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import CanadaProvincial from "./pages/CanadaProvincial";
 import GlobalCountry from "./pages/GlobalCountry";
@@ -11,7 +11,7 @@ import Welcome from "./pages/Welcome";
 
 ReactDOM.render(
   <ChakraProvider>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="canada/provincial" element={<CanadaProvincial />} />
@@ -19,7 +19,7 @@ ReactDOM.render(
         <Route path="global/countrystats" element={<GlobalCountry />} />
         <Route path="global/comparecountries" element={<GlobalCompare />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </ChakraProvider>,
   document.getElementById("root")
 );

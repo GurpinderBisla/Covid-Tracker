@@ -16,18 +16,18 @@ const CanadaProvincial = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await axios.get("https://api.covid19tracker.ca/summary");
-        const data = result.data.data[0]; //data for the latest day available
+        const result = await axios.get("https://api.opencovid.ca/");
+        const data = result.data.summary[0]; //data for the latest day available
 
         setStats({
-          new_cases: data.change_cases,
-          new_deaths: data.change_fatalities,
-          new_hospitalizations: data.change_hospitalizations,
-          new_recoveries: data.change_recoveries,
-          cases: data.total_cases,
-          deaths: data.total_fatalities,
-          hospitalizations: data.total_hospitalizations,
-          recoveries: data.total_recoveries,
+          new_cases: data.cases,
+          new_deaths: data.deaths,
+          new_tests: data.testing,
+          new_recoveries: data.recovered,
+          cases: data.cumulative_cases,
+          deaths: data.cumulative_deaths,
+          tests: data.cumulative_testing,
+          recoveries: data.cumulative_recovered,
         });
       } catch (e) {
         console.error(e);
@@ -41,7 +41,7 @@ const CanadaProvincial = () => {
       <Header />
       <h1>TODO CANADA PROVINCIAL</h1>
       <Flex padding={3} justifyContent="center">
-        <Stack direction={["column", "row"]} spacing="24px">
+        <Stack direction={["column", "row"]} spacing="24px" wrap={"wrap"}>
           <DataCard
             name="cases"
             data={stats.cases}
@@ -55,9 +55,9 @@ const CanadaProvincial = () => {
             bgColor={red}
           />
           <DataCard
-            name="hospitalizations"
-            data={stats.hospitalizations}
-            newData={stats.new_hospitalizations}
+            name="Tested"
+            data={stats.tests}
+            newData={stats.new_tests}
             bgColor={yellow}
           />
           <DataCard
