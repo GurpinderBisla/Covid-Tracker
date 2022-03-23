@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/Covid_Tracker/static/js/main.b5a7185c.js",
+    "static/js/787.3353a8a3.chunk.js": "/Covid_Tracker/static/js/787.3353a8a3.chunk.js",
+    "index.html": "/Covid_Tracker/index.html",
+    "main.b5a7185c.js.map": "/Covid_Tracker/static/js/main.b5a7185c.js.map",
+    "787.3353a8a3.chunk.js.map": "/Covid_Tracker/static/js/787.3353a8a3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b5a7185c.js"
+  ]
+}
