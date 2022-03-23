@@ -27,7 +27,6 @@ const Welcome = () => {
                 Canadian Stats
               </Button>
             </Link>
-
             <Link to="/global/countrystats">
               <Button size="lg" variant="ghost">
                 Global Stats

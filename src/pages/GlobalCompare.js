@@ -4,7 +4,7 @@ const GlobalCompare = () => {
   return (
     <div>
       <Header />
-      <h1>TODO GLOBAL COMPARE</h1>
+      <h1>Compare Countries</h1>
     </div>
   );
 };
