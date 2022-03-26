@@ -25,6 +25,7 @@ const GlobalCountry = () => {
       .then((result) => {
         const countryData = result.data.Countries.find((c) => {
           if (c.Country === country) return c;
+          else return null;
         });
         setTotalCases(countryData.TotalConfirmed);
         setTotalDeaths(countryData.TotalDeaths);

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import DataCard from "../components/DataCard";
-import { Flex, Stack } from "@chakra-ui/react";
+import { WrapItem, Wrap, Flex, Center, Heading } from "@chakra-ui/react";
+import BarGraph from "../components/BarGraph";
+import { Container } from "@chakra-ui/layout";
 
 const blue = "blue.200";
 const red = "red.400";
@@ -39,35 +41,52 @@ const CanadaProvincial = () => {
   return (
     <div>
       <Header />
-      <h1>TODO CANADA PROVINCIAL</h1>
-      <Flex padding={3} justifyContent="center">
-        <Stack direction={["column", "row"]} spacing="24px" wrap={"wrap"}>
-          <DataCard
-            name="cases"
-            data={stats.cases}
-            newData={stats.new_cases}
-            bgColor={blue}
-          />
-          <DataCard
-            name="deaths"
-            data={stats.deaths}
-            newData={stats.new_deaths}
-            bgColor={red}
-          />
-          <DataCard
-            name="Tested"
-            data={stats.tests}
-            newData={stats.new_tests}
-            bgColor={yellow}
-          />
-          <DataCard
-            name="recoveries"
-            data={stats.recoveries}
-            newData={stats.new_recoveries}
-            bgColor={green}
-          />
-        </Stack>
+      <Center>
+        <Heading letterSpacing="tighter" fontWeight="bold">
+          Canadian Stats
+        </Heading>
+      </Center>
+
+      <Flex padding={3} justify="center">
+        <Wrap spacing="24px" justify="space-evenly">
+          <WrapItem>
+            <DataCard
+              name="cases"
+              data={stats.cases}
+              newData={stats.new_cases}
+              bgColor={blue}
+            />
+          </WrapItem>
+          <WrapItem>
+            <DataCard
+              name="deaths"
+              data={stats.deaths}
+              newData={stats.new_deaths}
+              bgColor={red}
+            />
+          </WrapItem>
+          <WrapItem>
+            <DataCard
+              name="Tested"
+              data={stats.tests}
+              newData={stats.new_tests}
+              bgColor={yellow}
+            />
+          </WrapItem>
+          <WrapItem>
+            <DataCard
+              name="recoveries"
+              data={stats.recoveries}
+              newData={stats.new_recoveries}
+              bgColor={green}
+            />
+          </WrapItem>
+        </Wrap>
       </Flex>
+
+      <Container>
+        <BarGraph />
+      </Container>
     </div>
   );
 };
