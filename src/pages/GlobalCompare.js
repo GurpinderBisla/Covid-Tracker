@@ -3,7 +3,7 @@ import axios from "axios";
 import LineGraph from "../components/LineGraph";
 
 
-import { Flex, Center, HStack } from "@chakra-ui/layout";
+import { Flex, Center, HStack, Grid, Box } from "@chakra-ui/layout";
 import { WrapItem, Wrap } from "@chakra-ui/react";
 import { Select, Button } from "@chakra-ui/react";
 import {useState, useEffect} from 'react';
@@ -40,10 +40,9 @@ const GlobalCompare = () => {
     <div>
       <Header />
       <h1 align="center">Compare Countries</h1>
-      <Flex> 
-        <Wrap spacing='30px'>
-          <WrapItem>
-            <label>Select Country</label>
+      <Grid templateColumns='repeat(2, 1fr)' gap={6}>
+        <Box>
+          <label>Select Country</label>
             <Select id="firstSelect">
                 <option value={"none"}></option>
                 {countryArray.map((country) => (
@@ -55,10 +54,10 @@ const GlobalCompare = () => {
               <Button colorScheme="blue" onClick={changeCountryOne}>
               Select
             </Button>
-            <LineGraph />
-          </WrapItem>
-          <WrapItem>
-            <label>Select Country</label>
+            <LineGraph country={firstCountry} name={firstCountry}/>
+        </Box>
+        <Box>
+          <label>Select Country</label>
             <Select id="secondSelect">
                 <option value={"none"}></option>
                 {countryArray.map((country) => (
@@ -70,9 +69,9 @@ const GlobalCompare = () => {
               <Button colorScheme="blue" onClick={changeCountrySecond}>
               Select
             </Button>
-          </WrapItem>
-        </Wrap>
-      </Flex>
+            <LineGraph country={secondCountry} name={secondCountry}/>
+        </Box>
+      </Grid>
     </div>
   );
 };

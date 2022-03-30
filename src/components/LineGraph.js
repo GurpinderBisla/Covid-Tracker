@@ -26,31 +26,29 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
-};
-
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
 const LineGraph = props =>{
-    
     const [data, setData] = useState(null);
+    const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: props.name,
+        },
+      },
+    };
     
     useEffect(()=>{
         const makeLineGraph = async () => {
         try {
-            const result = await axios.get("https://api.covid19api.com/dayone/country/canada");
+            const result = await axios.get("https://api.covid19api.com/dayone/country/"+props.country);
             const countryData = result.data;
             let labels = [];
             countryData.forEach((x) => {
@@ -64,11 +62,11 @@ const LineGraph = props =>{
                 labels,
                 datasets: [
                     {
-                      label: 'Dataset 1',
+                      label: 'Cases',
                       data: countryData.map((x) => x.Confirmed),
                       borderColor: 'rgb(255, 99, 132)',
                       backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    }
+                    },
                 ], 
             });
             
@@ -76,8 +74,10 @@ const LineGraph = props =>{
             console.log(e);
           }
         };
-        makeLineGraph();
-    }, []);
+        if(props.country != undefined){
+            makeLineGraph();   
+        }
+    }, [props.country]);
 
     if (data === null) {
         return <Box></Box>;
