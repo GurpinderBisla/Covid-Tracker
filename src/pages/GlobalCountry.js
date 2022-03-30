@@ -19,9 +19,13 @@ const yellow = "purple.100";
 const GlobalCountry = () => {
   const [totalCases, setTotalCases] = useState(0);
   const [totalDeaths, setTotalDeaths] = useState(0);
+  const [totalRecovered, setTotalRecovered] = useState(0);
   const [country, setCountry] = useState();
   const [isGlobal, setIsGlobal] = useState(true);
   const [countryArray, setCountryArray] = useState([]);
+  const [newCases, setNewCases] = useState(0);
+  const [newDeaths, setNewDeaths] = useState(0);
+  const [newRecovered, setNewRecovered] = useState(0);
   
   useEffect(()=>{
     axios
@@ -48,6 +52,10 @@ const GlobalCountry = () => {
         });
         setTotalCases(countryData.TotalConfirmed);
         setTotalDeaths(countryData.TotalDeaths);
+        setNewCases(countryData.NewConfirmed);
+        setNewDeaths(countryData.NewDeaths);
+        setTotalRecovered(countryData.TotalRecovered);
+        setNewRecovered(countryData.NewRecovered);
       })
       .catch((error) => console.log(error));
   }, [country]);
@@ -61,6 +69,10 @@ const GlobalCountry = () => {
       .then((result) => {
         setTotalDeaths(result.data.Global.TotalDeaths);
         setTotalCases(result.data.Global.TotalConfirmed);
+        setNewCases(result.data.Global.NewConfirmed);
+        setNewDeaths(result.data.Global.NewDeaths);
+        setTotalRecovered(result.data.Global.TotalRecovered);
+        setNewRecovered(result.data.Global.NewRecovered);
       })
       .catch((error) => console.log(error));
   }, [isGlobal]);
@@ -83,8 +95,9 @@ const GlobalCountry = () => {
       <Flex padding={3} justify="center">
         <Wrap spacing="24px" justify="space-evenly">
           <WrapItem>
-            <DataCard data={totalCases} name="Total Cases" newData={0} bgColor={blue}/>
-            <DataCard data={totalDeaths} name="Total Deaths" newData={0} bgColor={red}/>
+            <DataCard data={totalCases} name="Total Cases" newData={newCases} bgColor={blue}/>
+            <DataCard data={totalDeaths} name="Total Deaths" newData={newDeaths} bgColor={red}/>
+            <DataCard data={totalRecovered} name="Total Recovered" newData={newRecovered} bgColor={green}/>
           </WrapItem>
         </Wrap>
       </Flex>
@@ -94,7 +107,7 @@ const GlobalCountry = () => {
           <Flex alignContent="flex-start">
             <Box display="flex" alignItems="baseline">
               <Box color="gray.500" fontWeight="semibold">
-                Select Country
+                <label>Select Country</label>
               </Box>
               <Select id="select">
                 <option value={"Global"}>Global</option>
