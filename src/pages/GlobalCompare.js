@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import axios from "axios";
+import LineGraph from "../components/LineGraph";
 
 
 import { Flex, Center, HStack } from "@chakra-ui/layout";
@@ -54,6 +55,7 @@ const GlobalCompare = () => {
               <Button colorScheme="blue" onClick={changeCountryOne}>
               Select
             </Button>
+            <LineGraph />
           </WrapItem>
           <WrapItem>
             <label>Select Country</label>

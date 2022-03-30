@@ -1,4 +1,8 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+import { Box } from "@chakra-ui/layout";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,26 +39,56 @@ const options = {
   },
 };
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const LineGraph = props =>{
+    
+    const [data, setData] = useState(null);
+    
+    useEffect(()=>{
+        const makeLineGraph = async () => {
+        try {
+            const result = await axios.get("https://api.covid19api.com/dayone/country/canada");
+            const countryData = result.data;
+            let labels = [];
+            countryData.forEach((x) => {
+                let date = new Date(x.Date);
+                let fullDate = monthNames[date.getMonth()] + "," + date.getFullYear();
+
+                labels.push(fullDate);
+            });
+            
+            setData({
+                labels,
+                datasets: [
+                    {
+                      label: 'Dataset 1',
+                      data: countryData.map((x) => x.Confirmed),
+                      borderColor: 'rgb(255, 99, 132)',
+                      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    }
+                ], 
+            });
+            
+          } catch (e) {
+            console.log(e);
+          }
+        };
+        makeLineGraph();
+    }, []);
+
+    if (data === null) {
+        return <Box></Box>;
+    } else {
+        return (
+          <Box>
+            <Line options={options} data={data} />
+          </Box>
+        );
+    }
+}
 
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
-  return <Line options={options} data={data} />;
+export default LineGraph;
