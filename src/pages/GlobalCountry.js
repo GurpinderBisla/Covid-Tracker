@@ -94,7 +94,7 @@ const GlobalCountry = () => {
           <Flex alignContent="flex-start">
             <Box display="flex" alignItems="baseline">
               <Box color="gray.500" fontWeight="semibold">
-                Select Country
+                <label>Select Country</label>
               </Box>
               <Select id="select">
                 <option value={"Global"}>Global</option>
