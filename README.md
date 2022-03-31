@@ -7,7 +7,7 @@ A one-stop shop covid tracker that provides you covid-related data for any count
 
 ##Snapshot
 
-![COVID-19 Tracker](/docs/covidlogo.png)
+![COVID-19 Tracker](/docs/covidsite.png)
 
 ## Links 🌎
 Project website: https://gurpinderbisla.github.io/Covid-Tracker/
