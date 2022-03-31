@@ -4,8 +4,8 @@ import axios from "axios";
 import DataCard from "../components/DataCard";
 import { WrapItem, Wrap, Flex, Center, Heading } from "@chakra-ui/react";
 import BarGraph from "../components/BarGraph";
-import { Container } from "@chakra-ui/layout";
-
+import { Box, VStack } from "@chakra-ui/layout";
+import Map from "../components/Map";
 
 const blue = "blue.200";
 const red = "red.400";
@@ -40,55 +40,62 @@ const CanadaProvincial = () => {
   }, []);
 
   return (
-    <div>
+    <Box>
       <Header />
-      <Center>
-        <Heading letterSpacing="tighter" fontWeight="bold">
-          Canadian Stats
-        </Heading>
-      </Center>
 
-      <Flex padding={3} justify="center">
-        <Wrap spacing="24px" justify="space-evenly">
-          <WrapItem>
-            <DataCard
-              name="cases"
-              data={stats.cases}
-              newData={stats.new_cases}
-              bgColor={blue}
-            />
-          </WrapItem>
-          <WrapItem>
-            <DataCard
-              name="deaths"
-              data={stats.deaths}
-              newData={stats.new_deaths}
-              bgColor={red}
-            />
-          </WrapItem>
-          <WrapItem>
-            <DataCard
-              name="Tested"
-              data={stats.tests}
-              newData={stats.new_tests}
-              bgColor={yellow}
-            />
-          </WrapItem>
-          <WrapItem>
-            <DataCard
-              name="recoveries"
-              data={stats.recoveries}
-              newData={stats.new_recoveries}
-              bgColor={green}
-            />
-          </WrapItem>
-        </Wrap>
-      </Flex>
+      <Box mg={5}>
+        <Center padding={5}>
+          <Heading letterSpacing="tighter" fontWeight="bold" size={"3xl"}>
+            Canadian Stats
+          </Heading>
+        </Center>
 
-      <Container>
-        <BarGraph />
-      </Container>
-    </div>
+        <Flex padding={3} justify="center" mg={5}>
+          <Wrap spacing="24px" justify="space-evenly">
+            <WrapItem>
+              <DataCard
+                name="cases"
+                data={stats.cases}
+                newData={stats.new_cases}
+                bgColor={blue}
+              />
+            </WrapItem>
+            <WrapItem>
+              <DataCard
+                name="deaths"
+                data={stats.deaths}
+                newData={stats.new_deaths}
+                bgColor={red}
+              />
+            </WrapItem>
+            <WrapItem>
+              <DataCard
+                name="Tested"
+                data={stats.tests}
+                newData={stats.new_tests}
+                bgColor={yellow}
+              />
+            </WrapItem>
+            <WrapItem>
+              <DataCard
+                name="recoveries"
+                data={stats.recoveries}
+                newData={stats.new_recoveries}
+                bgColor={green}
+              />
+            </WrapItem>
+          </Wrap>
+        </Flex>
+
+        <Center pg={10} mg={10}>
+          <VStack boxSize="75vw" spacing={10} marginTop={5}>
+            <BarGraph />
+            <Heading> Active Cases </Heading>
+            <Map />
+          </VStack>
+        </Center>
+      </Box>
+    </Box>
   );
 };
 
