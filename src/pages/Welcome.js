@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { Flex, Center, VStack, HStack, Heading } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
+import covidlogo from './covidlogo.png';
 
 /**
  * Component that renders the first page the user sees, lets them
@@ -13,6 +14,7 @@ const Welcome = () => {
       <Heading pt={5} size="3xl" letterSpacing="tighter">
         {" "}
         Another Covid Tracker{" "}
+        <img src={covidlogo}></img>
       </Heading>
 
       {/* 
