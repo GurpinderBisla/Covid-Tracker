@@ -3,13 +3,8 @@ import { Chart } from "react-google-charts";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const data = [
-  ["Province", "Active cases"],
-  ["Alberta", 10],
-];
-
 const options = {
-  region: "CA", // Africa
+  region: "CA",
   defaultColor: "#f5f5f5",
   resolution: "provinces",
   colors: ["red"],
@@ -49,6 +44,7 @@ const Map = () => {
         chartType="GeoChart"
         data={data}
         options={options}
+        //make this private
         mapsApiKey="AIzaSyBprftGNg139mspl8oFZusret46HdpslrQ"
       />
     </Box>
