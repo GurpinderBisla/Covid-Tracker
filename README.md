@@ -1,6 +1,7 @@
-# Another Covid Tracker 😷
 
 ![COVID-19 Tracker](/docs/covidlogo.png)
+# Another Covid Tracker 😷
+
 
 A one-stop shop covid tracker that provides you covid-related data for any country in the world as well as Canada-wide data. 
 
