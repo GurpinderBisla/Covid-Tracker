@@ -88,53 +88,7 @@ const LineGraph = (props) => {
         </Wrap>
       );
     }
-<<<<<<< HEAD
-    
-    useEffect(()=>{
-        const makeLineGraph = async () => {
-        try {
-            const result = await axios.get("https://api.covid19api.com/dayone/country/"+props.country);
-            const countryData = result.data;
-            let labels = [];
-            countryData.forEach((x) => {
-                let date = new Date(x.Date);
-                let fullDate = monthNames[date.getMonth()] + "," + date.getFullYear();
-                labels.push(fullDate);
-            });
-            setTotalCases(countryData[countryData.length-1].Confirmed);
-            setTotalDeaths(countryData[countryData.length-1].Deaths);
-            setNewCases(countryData[countryData.length-2].Confirmed);
-            setNewDeaths(countryData[countryData.length-2].Deaths);
-            
-            setData({
-                labels,
-                datasets: [
-                    {
-                      label: props.compare == "Confirmed" ? "Cases" : "Deaths",
-                      data: countryData.map((x) => {
-                        if(props.compare === "Confirmed"){
-                          return x.Confirmed;
-                        }else{
-                          return x.Deaths;
-                        }
-                        }),
-                      borderColor: props.compare == "Confirmed" ? 'rgb(53, 162, 235)' : 'rgb(255, 99, 132)',
-                      backgroundColor: props.compare == "Confirmed" ? 'rgb(53, 162, 235, 0.5)' : 'rgba(255, 99, 132, 0.5)',
-                    },
-                ], 
-            });
-            
-          } catch (e) {
-            console.log(e);
-          }
-        };
-        if(props.country != undefined){
-            makeLineGraph();   
-        }
-    }, [props.country, props.compare]);
-=======
   };
->>>>>>> da407edd6d238600ad197f9d99b7023ae332825a
 
   useEffect(() => {
     const makeLineGraph = async () => {
@@ -184,7 +138,7 @@ const LineGraph = (props) => {
     }
   }, [props.country, props.compare]);
 
-  if (data === null) {
+  if (data === null || props.country === "United States of America") {
     return <Box></Box>;
   } else {
     return (

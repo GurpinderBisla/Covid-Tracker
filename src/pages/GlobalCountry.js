@@ -1,10 +1,7 @@
 import Header from "../components/Header";
 import DataCard from "../components/DataCard";
 import LineGraph from "../components/LineGraph";
-<<<<<<< HEAD
-////// remove australia and usa from options list
-=======
->>>>>>> da407edd6d238600ad197f9d99b7023ae332825a
+import GlobalMap from "../components/GlobalMap";
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
@@ -87,13 +84,17 @@ const GlobalCountry = () => {
   const displayLineGraph = () => {
     if (!isGlobal) {
       return (
-        <LineGraph
-          country={country}
-          name={country}
-          compare={"Confirmed"}
-          p={[5, 10]}
-          cards={false}
-        />
+        <Center>
+        <Box w={"75vw"}>
+          <LineGraph
+            country={country}
+            name={country}
+            compare={"Confirmed"}
+            p={[5, 0]}
+            cards={false}
+          />
+        </Box>
+      </Center>
       );
     }
   };
@@ -149,8 +150,15 @@ const GlobalCountry = () => {
           </WrapItem>
         </Wrap>
       </Flex>
+      {displayLineGraph()}
+      <Heading align="center" m={[5, 10]}>
+        {" "}
+        Global Total Status{" "}
+      </Heading>
       <Center>
-        <Box boxSize={"75vw"}>{displayLineGraph()}</Box>
+        <Box w={"75vw"} padding={3}>
+          <GlobalMap />
+        </Box>
       </Center>
     </>
   );
