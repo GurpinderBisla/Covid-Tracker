@@ -6,6 +6,7 @@ import { WrapItem, Wrap, Flex, Center, Heading } from "@chakra-ui/react";
 import BarGraph from "../components/BarGraph";
 import { Container } from "@chakra-ui/layout";
 
+
 const blue = "blue.200";
 const red = "red.400";
 const green = "green.200";
