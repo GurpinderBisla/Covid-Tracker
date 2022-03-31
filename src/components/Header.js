@@ -3,6 +3,7 @@ import { Flex, Heading, Stack, Spacer } from "@chakra-ui/layout";
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { Link } from "react-router-dom";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import covidlogo from '../pages/covidlogo.png';
 
 /**
  * A simple header that holds no state.
@@ -17,6 +18,7 @@ const Header = () => {
       borderBottomColor="gray.100"
       position="sticky"
     >
+      <a href="../pages/welcome.js"><img src={covidlogo} alt="covid website logo"></img></a>
       <Heading letterSpacing="tighter">Another Covid Tracker</Heading>
 
       <Spacer />
