@@ -18,7 +18,7 @@ const Header = () => {
       borderBottomColor="gray.100"
       position="sticky"
     >
-      <img src={covidlogo}></img>
+      <a href="../pages/welcome.js"><img src={covidlogo} alt="covid website logo"></img></a>
       <Heading letterSpacing="tighter">Another Covid Tracker</Heading>
 
       <Spacer />
