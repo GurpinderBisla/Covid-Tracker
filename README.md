@@ -1,6 +1,12 @@
 # Another Covid Tracker 😷
 
-A one-stop covid tracker that provides you covid-related data for any country in the world as well as Canada-wide data. 
+![COVID-19 Tracker](/docs/covidlogo.png)
+
+A one-stop shop covid tracker that provides you covid-related data for any country in the world as well as Canada-wide data. 
+
+##Snapshot
+
+![COVID-19 Tracker](/docs/covidlogo.png)
 
 ## Links 🌎
 Project website: https://gurpinderbisla.github.io/Covid-Tracker/
