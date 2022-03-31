@@ -22,7 +22,7 @@ const Map = () => {
           let province = x.province;
           if (province === "BC") {
             province = "British Columbia";
-          } else if (province == "NL") {
+          } else if (province === "NL") {
             province = "North West Territories";
           } else if (province === "PEI") {
             province = "Prince Edward Island";

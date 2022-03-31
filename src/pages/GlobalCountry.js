@@ -2,7 +2,6 @@ import Header from "../components/Header";
 import DataCard from "../components/DataCard";
 import LineGraph from "../components/LineGraph";
 
-
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
 import { Flex, Center, HStack, Heading } from "@chakra-ui/layout";
@@ -11,14 +10,9 @@ import { useEffect } from "react";
 import { Select } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { WrapItem, Wrap } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-
-
 
 const blue = "blue.200";
 const red = "red.400";
-const green = "green.200";
-const yellow = "purple.100";
 
 const GlobalCountry = () => {
   const [totalCases, setTotalCases] = useState(0);
@@ -30,17 +24,17 @@ const GlobalCountry = () => {
   const [newCases, setNewCases] = useState(0);
   const [newDeaths, setNewDeaths] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     axios
       .get("https://api.covid19api.com/summary")
       .then((result) => {
         let arr = [];
-        result.data.Countries.map(elem=>arr.push(elem.Country));
+        result.data.Countries.map((elem) => arr.push(elem.Country));
         setCountryArray(arr);
       })
       .catch((error) => console.log(error));
-  },[]);
-  
+  }, []);
+
   useEffect(() => {
     if (country === "Global" || country === undefined) {
       return;
@@ -85,18 +79,29 @@ const GlobalCountry = () => {
       setIsGlobal(false);
     }
   };
-  
-  const displayLineGraph = ()=> {
-    if(!isGlobal){
-      return (<LineGraph country={country} name={country} compare={"Confirmed"} p={[5, 10]} cards={false}/>);
+
+  const displayLineGraph = () => {
+    if (!isGlobal) {
+      return (
+        <LineGraph
+          country={country}
+          name={country}
+          compare={"Confirmed"}
+          p={[5, 10]}
+          cards={false}
+        />
+      );
     }
-  }
+  };
 
   return (
     <>
       <Header />
-      <Heading align="center" m={[5, 10]}> Global Status </Heading>
-      
+      <Heading align="center" m={[5, 10]}>
+        {" "}
+        Global Status{" "}
+      </Heading>
+
       <Center w="100vw">
         <HStack m={[5, 10]}>
           <Flex alignContent="flex-start">
@@ -119,21 +124,29 @@ const GlobalCountry = () => {
           </Flex>
         </HStack>
       </Center>
-      
+
       <Flex padding={3} justify="center">
         <Wrap spacing="24px" justify="space-evenly">
           <WrapItem>
-            <DataCard data={totalCases} name="Total Cases" newData={newCases} bgColor={blue}/>
+            <DataCard
+              data={totalCases}
+              name="Total Cases"
+              newData={newCases}
+              bgColor={blue}
+            />
           </WrapItem>
           <WrapItem>
-            <DataCard data={totalDeaths} name="Total Deaths" newData={newDeaths} bgColor={red}/>
+            <DataCard
+              data={totalDeaths}
+              name="Total Deaths"
+              newData={newDeaths}
+              bgColor={red}
+            />
           </WrapItem>
         </Wrap>
       </Flex>
       <Center>
-        <Box boxSize={"75vw"}>
-            {displayLineGraph()}
-        </Box>
+        <Box boxSize={"75vw"}>{displayLineGraph()}</Box>
       </Center>
     </>
   );
