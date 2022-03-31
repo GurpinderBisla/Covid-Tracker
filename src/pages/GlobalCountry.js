@@ -131,7 +131,7 @@ const GlobalCountry = () => {
         </Wrap>
       </Flex>
       <Center>
-        <Box>
+        <Box boxSize={"75vw"}>
             {displayLineGraph()}
         </Box>
       </Center>
