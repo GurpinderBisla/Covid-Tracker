@@ -130,9 +130,11 @@ const GlobalCountry = () => {
           </WrapItem>
         </Wrap>
       </Flex>
-        <Box maxW={1000}>
+      <Center>
+        <Box>
             {displayLineGraph()}
         </Box>
+      </Center>
     </>
   );
 };

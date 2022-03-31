@@ -78,11 +78,9 @@ const LineGraph = props =>{
         try {
             const result = await axios.get("https://api.covid19api.com/dayone/country/"+props.country);
             const countryData = result.data;
-            let labels = [];
-            countryData.forEach((x) => {
+            let labels = countryData.map((x) => {
                 let date = new Date(x.Date);
-                let fullDate = monthNames[date.getMonth()] + "," + date.getFullYear();
-                labels.push(fullDate);
+                return monthNames[date.getMonth()] + "," + date.getFullYear();
             });
             setTotalCases(countryData[countryData.length-1].Confirmed);
             setTotalDeaths(countryData[countryData.length-1].Deaths);
@@ -120,7 +118,7 @@ const LineGraph = props =>{
         return <Box></Box>;
     } else {
         return (
-          <Box>
+          <Box boxSize={"75vw"}>
             {displayCards()}
             <Line options={options} data={data}/>
           </Box>
