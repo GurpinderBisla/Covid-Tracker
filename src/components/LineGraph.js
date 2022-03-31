@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Box } from "@chakra-ui/layout";
 import DataCard from "./DataCard";
+import { WrapItem, Wrap } from "@chakra-ui/react";
+
 
 import {
   Chart as ChartJS,
@@ -56,6 +58,21 @@ const LineGraph = props =>{
       },
     };
     
+    const displayCards = ()=>{
+      if(props.cards){
+        return (
+          <Wrap spacing="24px" justify="space-evenly">
+              <WrapItem>
+                <DataCard data={totalCases} name="Total Cases" newData={totalCases - newCases} bgColor={blue}/>
+              </WrapItem>
+              <WrapItem>
+                <DataCard data={totalDeaths} name="Total Deaths" newData={totalDeaths - newDeaths} bgColor={red}/>
+              </WrapItem>
+            </Wrap>
+        );
+      }
+    }
+    
     useEffect(()=>{
         const makeLineGraph = async () => {
         try {
@@ -104,9 +121,8 @@ const LineGraph = props =>{
     } else {
         return (
           <Box>
-            <DataCard data={totalCases} name="Total Cases" newData={totalCases - newCases} bgColor={blue}/>
-            <DataCard data={totalDeaths} name="Total Deaths" newData={totalDeaths - newDeaths} bgColor={red}/>
-            <Line options={options} data={data} />
+            {displayCards()}
+            <Line options={options} data={data}/>
           </Box>
         );
     }

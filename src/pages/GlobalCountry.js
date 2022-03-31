@@ -1,14 +1,18 @@
 import Header from "../components/Header";
 import DataCard from "../components/DataCard";
+import LineGraph from "../components/LineGraph";
+
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
-import { Flex, Center, HStack } from "@chakra-ui/layout";
+import { Flex, Center, HStack, Heading } from "@chakra-ui/layout";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Select } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { WrapItem, Wrap } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+
 
 
 const blue = "blue.200";
@@ -81,23 +85,20 @@ const GlobalCountry = () => {
       setIsGlobal(false);
     }
   };
+  
+  const displayLineGraph = ()=> {
+    if(!isGlobal){
+      return (<LineGraph country={country} name={country} compare={"Confirmed"} p={[5, 10]} cards={false}/>);
+    }
+  }
 
   return (
     <>
       <Header />
-      <h1 align="center"> Global Status </h1>
-      
-      <Flex padding={3} justify="center">
-        <Wrap spacing="24px" justify="space-evenly">
-          <WrapItem>
-            <DataCard data={totalCases} name="Total Cases" newData={newCases} bgColor={blue}/>
-            <DataCard data={totalDeaths} name="Total Deaths" newData={newDeaths} bgColor={red}/>
-          </WrapItem>
-        </Wrap>
-      </Flex>
+      <Heading align="center" m={[5, 10]}> Global Status </Heading>
       
       <Center w="100vw">
-        <HStack>
+        <HStack m={[5, 10]}>
           <Flex alignContent="flex-start">
             <Box display="flex" alignItems="baseline">
               <Box color="gray.500" fontWeight="semibold">
@@ -118,6 +119,20 @@ const GlobalCountry = () => {
           </Flex>
         </HStack>
       </Center>
+      
+      <Flex padding={3} justify="center">
+        <Wrap spacing="24px" justify="space-evenly">
+          <WrapItem>
+            <DataCard data={totalCases} name="Total Cases" newData={newCases} bgColor={blue}/>
+          </WrapItem>
+          <WrapItem>
+            <DataCard data={totalDeaths} name="Total Deaths" newData={newDeaths} bgColor={red}/>
+          </WrapItem>
+        </Wrap>
+      </Flex>
+        <Box maxW={1000}>
+            {displayLineGraph()}
+        </Box>
     </>
   );
 };

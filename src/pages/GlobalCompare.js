@@ -51,17 +51,20 @@ const GlobalCompare = () => {
   return (
     <div>
       <Header />
-      <Heading align="center">Compare Countries</Heading>
-      <Box display="flex" alignItems="baseline">
-        <label>Compare using: </label>
-        <Select id="compareSelect" maxW="100px">
-          <option value="cases">Cases</option>
-          <option value="deaths">Deaths</option>
-        </Select>
-        <Button onClick={changeCompare}>Select</Button>
-      </Box>
+      <Heading align="center" m={[2, 5]}>Compare Countries</Heading>
+      <Center w="100vw">
+        <Box display="flex" alignItems="center" m={[2, 10]}>
+          <label>Compare using: </label>
+          <Select id="compareSelect" maxW="100px">
+            <option value="cases">Cases</option>
+            <option value="deaths">Deaths</option>
+          </Select>
+          <Button onClick={changeCompare}>Select</Button>
+        </Box>
+      </Center>
+      
       <Grid templateColumns='repeat(2, 1fr)' gap={6} m={[2, 3]}>
-        <Box>
+        <Box p={[5, 10]}>
           <label>Select Country</label>
             <Select id="firstSelect">
                 <option value={"none"}></option>
@@ -74,9 +77,9 @@ const GlobalCompare = () => {
               <Button colorScheme="blue" onClick={changeCountryOne}>
               Select
             </Button>
-            <LineGraph country={firstCountry} name={firstCountry} compare={compare}/>
+            <LineGraph country={firstCountry} name={firstCountry} compare={compare} p={[5, 10]} cards={true}/>
         </Box>
-        <Box>
+        <Box p={[5, 10]}>
           <label>Select Country</label>
             <Select id="secondSelect">
                 <option value={"none"}></option>
@@ -89,7 +92,7 @@ const GlobalCompare = () => {
               <Button colorScheme="blue" onClick={changeCountrySecond}>
               Select
             </Button>
-            <LineGraph country={secondCountry} name={secondCountry} compare={compare}/>
+            <LineGraph country={secondCountry} name={secondCountry} compare={compare} p={[5, 10]} cards={true}/>
         </Box>
       </Grid>
     </div>
