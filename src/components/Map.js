@@ -45,7 +45,7 @@ const Map = () => {
         data={data}
         options={options}
         //make this private
-        mapsApiKey="AIzaSyBprftGNg139mspl8oFZusret46HdpslrQ"
+        mapsApiKey={process.env.GOOGLE_KEY}
       />
     </Box>
   );
