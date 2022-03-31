@@ -34,8 +34,6 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 const blue = "blue.200";
 const red = "red.400";
-const green = "green.200";
-const yellow = "purple.100";
 
 const LineGraph = props =>{
     const [data, setData] = useState(null);
@@ -95,7 +93,7 @@ const LineGraph = props =>{
                     {
                       label: props.compare == "Confirmed" ? "Cases" : "Deaths",
                       data: countryData.map((x) => {
-                        if(props.compare == "Confirmed"){
+                        if(props.compare === "Confirmed"){
                           return x.Confirmed;
                         }else{
                           return x.Deaths;

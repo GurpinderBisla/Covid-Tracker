@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import DataCard from "../components/DataCard";
 import LineGraph from "../components/LineGraph";
-
+////// remove australia and usa from options list
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
