@@ -1,14 +1,18 @@
 import Header from "../components/Header";
 import DataCard from "../components/DataCard";
+import LineGraph from "../components/LineGraph";
+
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
-import { Flex, Center, HStack } from "@chakra-ui/layout";
+import { Flex, Center, HStack, Heading } from "@chakra-ui/layout";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Select } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { WrapItem, Wrap } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+
 
 
 const blue = "blue.200";
@@ -19,14 +23,13 @@ const yellow = "purple.100";
 const GlobalCountry = () => {
   const [totalCases, setTotalCases] = useState(0);
   const [totalDeaths, setTotalDeaths] = useState(0);
-  const [totalRecovered, setTotalRecovered] = useState(0);
+
   const [country, setCountry] = useState();
   const [isGlobal, setIsGlobal] = useState(true);
   const [countryArray, setCountryArray] = useState([]);
   const [newCases, setNewCases] = useState(0);
   const [newDeaths, setNewDeaths] = useState(0);
-  const [newRecovered, setNewRecovered] = useState(0);
-  
+
   useEffect(()=>{
     axios
       .get("https://api.covid19api.com/summary")
@@ -54,8 +57,6 @@ const GlobalCountry = () => {
         setTotalDeaths(countryData.TotalDeaths);
         setNewCases(countryData.NewConfirmed);
         setNewDeaths(countryData.NewDeaths);
-        setTotalRecovered(countryData.TotalRecovered);
-        setNewRecovered(countryData.NewRecovered);
       })
       .catch((error) => console.log(error));
   }, [country]);
@@ -71,8 +72,6 @@ const GlobalCountry = () => {
         setTotalCases(result.data.Global.TotalConfirmed);
         setNewCases(result.data.Global.NewConfirmed);
         setNewDeaths(result.data.Global.NewDeaths);
-        setTotalRecovered(result.data.Global.TotalRecovered);
-        setNewRecovered(result.data.Global.NewRecovered);
       })
       .catch((error) => console.log(error));
   }, [isGlobal]);
@@ -86,24 +85,20 @@ const GlobalCountry = () => {
       setIsGlobal(false);
     }
   };
+  
+  const displayLineGraph = ()=> {
+    if(!isGlobal){
+      return (<LineGraph country={country} name={country} compare={"Confirmed"} p={[5, 10]} cards={false}/>);
+    }
+  }
 
   return (
     <>
       <Header />
-      <h1 align="center"> Global Status </h1>
-      
-      <Flex padding={3} justify="center">
-        <Wrap spacing="24px" justify="space-evenly">
-          <WrapItem>
-            <DataCard data={totalCases} name="Total Cases" newData={newCases} bgColor={blue}/>
-            <DataCard data={totalDeaths} name="Total Deaths" newData={newDeaths} bgColor={red}/>
-            <DataCard data={totalRecovered} name="Total Recovered" newData={newRecovered} bgColor={green}/>
-          </WrapItem>
-        </Wrap>
-      </Flex>
+      <Heading align="center" m={[5, 10]}> Global Status </Heading>
       
       <Center w="100vw">
-        <HStack>
+        <HStack m={[5, 10]}>
           <Flex alignContent="flex-start">
             <Box display="flex" alignItems="baseline">
               <Box color="gray.500" fontWeight="semibold">
@@ -124,6 +119,20 @@ const GlobalCountry = () => {
           </Flex>
         </HStack>
       </Center>
+      
+      <Flex padding={3} justify="center">
+        <Wrap spacing="24px" justify="space-evenly">
+          <WrapItem>
+            <DataCard data={totalCases} name="Total Cases" newData={newCases} bgColor={blue}/>
+          </WrapItem>
+          <WrapItem>
+            <DataCard data={totalDeaths} name="Total Deaths" newData={newDeaths} bgColor={red}/>
+          </WrapItem>
+        </Wrap>
+      </Flex>
+        <Box maxW={1000}>
+            {displayLineGraph()}
+        </Box>
     </>
   );
 };
