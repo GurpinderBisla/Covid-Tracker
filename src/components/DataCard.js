@@ -9,7 +9,7 @@ const DataCard = (props) => {
   const bgColor = props.bgColor;
 
   return (
-    <Badge bg={bgColor} padding={3} maxW="sm" maxH="sm">
+    <Badge bg={bgColor} padding={3}>
       <VStack>
         <Heading letterSpacing={"tighter"} fontSize="2.5vw">
           {cardName} {cardData}
