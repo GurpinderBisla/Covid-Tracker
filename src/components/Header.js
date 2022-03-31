@@ -12,7 +12,7 @@ import covidlogo from '../pages/covidlogo.png';
 const Header = () => {
   return (
     <Flex
-      padding={1}
+      padding={2}
       align="center"
       borderBottom="1px"
       borderBottomColor="gray.100"
