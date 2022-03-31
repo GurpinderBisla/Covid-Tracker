@@ -4,7 +4,7 @@ import axios from "axios";
 import DataCard from "../components/DataCard";
 import { WrapItem, Wrap, Flex, Center, Heading } from "@chakra-ui/react";
 import BarGraph from "../components/BarGraph";
-import { Container } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
 
 
 const blue = "blue.200";
@@ -40,10 +40,12 @@ const CanadaProvincial = () => {
   }, []);
 
   return (
-    <div>
+    <Box>
       <Header />
-      <Center>
-        <Heading letterSpacing="tighter" fontWeight="bold">
+
+      <Box mg={5}>
+      <Center padding={5}>
+        <Heading letterSpacing="tighter" fontWeight="bold" size={"3xl"}>
           Canadian Stats
         </Heading>
       </Center>
@@ -85,10 +87,13 @@ const CanadaProvincial = () => {
         </Wrap>
       </Flex>
 
-      <Container>
-        <BarGraph />
-      </Container>
-    </div>
+        <Center>
+          <Flex justifyContent={"space-evenly"} boxSize="75vw">
+            <BarGraph />
+          </Flex>
+        </Center>
+        </Box>
+    </Box>
   );
 };
 

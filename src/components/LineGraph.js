@@ -118,7 +118,7 @@ const LineGraph = props =>{
         return <Box></Box>;
     } else {
         return (
-          <Box boxSize={"75vw"}>
+          <Box boxSize={"100%"}>
             {displayCards()}
             <Line options={options} data={data}/>
           </Box>

@@ -62,7 +62,7 @@ const BarGraph = () => {
     return <Box></Box>;
   } else {
     return (
-      <Box>
+      <Box boxSize={"100%"}>
         <Bar options={options} data={data}></Bar>
       </Box>
     );
