@@ -1,4 +1,4 @@
-![COVID-19 Tracker](/docs/covidlogo.png)
+![COVID-19 Tracker](/docs/covid-logo.png)
 # Another Covid Tracker 😷
 
 
