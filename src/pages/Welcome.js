@@ -21,7 +21,7 @@ const Welcome = () => {
         Centers the content vertically and horizontally, pretty long
         winded, most likely a better way to do this exists 
       */}
-      <Center h="77.5vh">
+      <Center h="100vh">
         <HStack color="white">
           <Flex alignContent="flex-start">
             <Link to="/canada/provincial">

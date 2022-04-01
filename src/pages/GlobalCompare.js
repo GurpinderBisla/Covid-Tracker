@@ -1,34 +1,17 @@
 import Header from "../components/Header";
-import axios from "axios";
 import LineGraph from "../components/LineGraph";
 import Footer from "../components/Footer";
+import countries from "./countries";
 
 
 import { Center, Grid, Box, Heading } from "@chakra-ui/layout";
 import { Select, Button } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const GlobalCompare = () => {
-  const [countryArray, setCountryArray] = useState([]);
   const [firstCountry, setFirstCountry] = useState();
   const [secondCountry, setSecondCountry] = useState();
   const [compare, setCompare] = useState("Confirmed");
-
-  useEffect(() => {
-    axios
-      .get("https://api.covid19api.com/summary")
-      .then((result) => {
-        let arr = [];
-        result.data.Countries.map((elem) => {
-          if(elem.Country === "Australia" || elem.Country === "United States of America"){
-            return 0;
-          }
-          return arr.push(elem.Country);
-        });
-        setCountryArray(arr);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   const changeCountryOne = () => {
     const select = document.getElementById("firstSelect").value;
@@ -86,7 +69,7 @@ const GlobalCompare = () => {
           <label>Select Country</label>
           <Select id="firstSelect">
             <option value={"none"}></option>
-            {countryArray.map((country) => (
+            {countries.map((country) => (
               <option value={country} key={country}>
                 {country}
               </option>
@@ -107,7 +90,7 @@ const GlobalCompare = () => {
           <label>Select Country</label>
           <Select id="secondSelect">
             <option value={"none"}></option>
-            {countryArray.map((country) => (
+            {countries.map((country) => (
               <option value={country} key={country}>
                 {country}
               </option>
