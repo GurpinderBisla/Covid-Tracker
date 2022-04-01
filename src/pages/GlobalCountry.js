@@ -3,6 +3,7 @@ import DataCard from "../components/DataCard";
 import LineGraph from "../components/LineGraph";
 import GlobalMap from "../components/GlobalMap";
 import Footer from "../components/Footer";
+import countries from "./countries";
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
@@ -22,20 +23,8 @@ const GlobalCountry = () => {
 
   const [country, setCountry] = useState();
   const [isGlobal, setIsGlobal] = useState(true);
-  const [countryArray, setCountryArray] = useState([]);
   const [newCases, setNewCases] = useState(0);
   const [newDeaths, setNewDeaths] = useState(0);
-
-  useEffect(() => {
-    axios
-      .get("https://api.covid19api.com/summary")
-      .then((result) => {
-        let arr = [];
-        result.data.Countries.map((elem) => arr.push(elem.Country));
-        setCountryArray(arr);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   useEffect(() => {
     if (country === "Global" || country === undefined) {
@@ -117,7 +106,7 @@ const GlobalCountry = () => {
               </Box>
               <Select id="select">
                 <option value={"Global"}>Global</option>
-                {countryArray.map((country) => (
+                {countries.map((country) => (
                   <option value={country} key={country}>
                     {country}
                   </option>

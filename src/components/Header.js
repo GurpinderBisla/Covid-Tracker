@@ -4,7 +4,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { Link } from "react-router-dom";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Image } from '@chakra-ui/react'
-import covidlogo from '../pages/covidlogo.png';
+import covidlogo from '../imgs/covidlogo.png';
 
 /**
  * A simple header that holds no state.
