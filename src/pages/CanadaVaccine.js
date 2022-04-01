@@ -7,6 +7,7 @@ import GeneralDataCard from "../components/GeneralDataCard";
 import CanadaLineGraph from "../components/CanadaLineGraph";
 
 const provinces = [
+  "Canada",
   "Alberta",
   "British Columbia",
   "Manitoba",
@@ -23,6 +24,7 @@ const provinces = [
 ];
 
 const provinceTwoLetters = [
+  "canada",
   "AB",
   "BC",
   "MB",
@@ -60,7 +62,7 @@ const red = "red.400";
 const green = "green.200";
 
 const CanadaVaccine = () => {
-  const [province, setProvince] = useState(null);
+  const [province, setProvince] = useState("Canada");
   const [vaccineSummary, setVaccineSummary] = useState(null);
 
   useEffect(() => {
@@ -75,7 +77,6 @@ const CanadaVaccine = () => {
     getData();
   }, []);
 
-  console.log(provinceTwoLetters[provinces.indexOf(province)]);
   return (
     <Box>
       <Header />
@@ -104,7 +105,7 @@ const CanadaVaccine = () => {
                   <GeneralDataCard
                     name="Vaccine Taken"
                     bgColor={green}
-                    data={vaccineSummary.cumulative_cvaccine}
+                    data={vaccineSummary.cumulative_avaccine}
                   />
                 </WrapItem>
                 <WrapItem>
@@ -126,11 +127,7 @@ const CanadaVaccine = () => {
         </Center>
 
         <Center>
-          <Select
-            placeholder="Select Province"
-            width="80vw"
-            onChange={(x) => setProvince(x.target.value)}
-          >
+          <Select width="80vw" onChange={(x) => setProvince(x.target.value)}>
             {provinces.map((x) => {
               return (
                 <option key={x} value={x}>
