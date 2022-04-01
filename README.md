@@ -9,9 +9,9 @@ Project website: https://gurpinderbisla.github.io/Covid-Tracker/
 
 Project github: https://github.com/GurpinderBisla/Covid-Tracker.git/
 
-APIs used: https://api.opencovid.ca/
-
-https://api.covid19api.com/summary/
+APIs used: 
+  1. https://api.opencovid.ca/
+  2. https://api.covid19api.com/summary
 
 ## Built With 👩‍💻
 -React
