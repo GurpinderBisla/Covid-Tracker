@@ -53,6 +53,7 @@ const CanadaProvincial = () => {
         <Flex padding={3} justify="center" mg={5}>
           <Wrap spacing="24px" justify="space-evenly">
             <WrapItem>
+              <data-testid>cases</data-testid>
               <DataCard
                 name="cases"
                 data={stats.cases}
