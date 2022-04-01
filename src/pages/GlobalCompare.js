@@ -19,12 +19,7 @@ const GlobalCompare = () => {
       .get("https://api.covid19api.com/summary")
       .then((result) => {
         let arr = [];
-        result.data.Countries.map((elem) => {
-          if(elem.Country === "Australia" || elem.Country === "United States of America"){
-            return 0;
-          }
-          return arr.push(elem.Country);
-        });
+        result.data.Countries.map((elem) => arr.push(elem.Country));
         setCountryArray(arr);
       })
       .catch((error) => console.log(error));
@@ -82,7 +77,7 @@ const GlobalCompare = () => {
       </Center>
 
       <Grid templateColumns="repeat(2, 1fr)" gap={6} m={[2, 3]}>
-        <Box p={[5, 1]}>
+        <Box p={[5, 10]}>
           <label>Select Country</label>
           <Select id="firstSelect">
             <option value={"none"}></option>
@@ -103,7 +98,7 @@ const GlobalCompare = () => {
             cards={true}
           />
         </Box>
-        <Box p={[5, 1]}>
+        <Box p={[5, 10]}>
           <label>Select Country</label>
           <Select id="secondSelect">
             <option value={"none"}></option>

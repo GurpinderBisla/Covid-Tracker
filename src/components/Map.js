@@ -48,7 +48,6 @@ const Map = () => {
         chartType="GeoChart"
         data={data}
         options={options}
-        //make this private
         mapsApiKey={process.env.GOOGLE_KEY}
       />
     </Box>
