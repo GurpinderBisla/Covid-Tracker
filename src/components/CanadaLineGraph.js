@@ -27,7 +27,6 @@ ChartJS.register(
 
 const CanadaLineGraph = (props) => {
   const [data, setData] = useState(null);
-  const province = props.province;
 
   const options = {
     responsive: true,
@@ -46,11 +45,10 @@ const CanadaLineGraph = (props) => {
     const makeLineGraph = async () => {
       try {
         const result = await axios.get(
-          `https://api.opencovid.ca/timeseries?stat=avaccine&loc=${province}&after=01-06-2021`
+          `https://api.opencovid.ca/timeseries?stat=avaccine&loc=${props.province}&after=01-06-2021`
         );
         const resultData = result.data.avaccine;
         const labels = resultData.map((x) => x.date_vaccine_administered);
-        console.log(resultData);
 
         setData({
           labels,
@@ -68,7 +66,7 @@ const CanadaLineGraph = (props) => {
       }
     };
     makeLineGraph();
-  }, []);
+  }, [props]);
 
   if (data === null) {
     return <Box></Box>;

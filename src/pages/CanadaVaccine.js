@@ -22,21 +22,37 @@ const provinces = [
   "Yukon Territory",
 ];
 
+const provinceTwoLetters = [
+  "AB",
+  "BC",
+  "MB",
+  "NB",
+  "NL",
+  "NT",
+  "NS",
+  "NU",
+  "ON",
+  "PE",
+  "QC",
+  "SK",
+  "YT",
+];
+
 const populations2021 = {
   canada: 38526760,
   NL: 522453,
   PEI: 166331,
-  "Nova Scotia": 1002586,
-  "New Brunswick": 797102,
-  Quebec: 8639642,
-  Ontario: 14951825,
-  Manitoba: 1390249,
-  Saskatchewan: 1183269,
-  Alberta: 4480486,
+  NS: 1002586,
+  NB: 797102,
+  QC: 8639642,
+  ON: 14951825,
+  MA: 1390249,
+  SA: 1183269,
+  AL: 4480486,
   BC: 5264485,
-  Yukon: 42982,
+  YU: 42982,
   NWT: 45640,
-  Nunavut: 39710,
+  NU: 39710,
 };
 
 const blue = "blue.200";
@@ -59,6 +75,7 @@ const CanadaVaccine = () => {
     getData();
   }, []);
 
+  console.log(provinceTwoLetters[provinces.indexOf(province)]);
   return (
     <Box>
       <Header />
@@ -125,7 +142,13 @@ const CanadaVaccine = () => {
         </Center>
 
         <Center>
-          {province !== null ? <CanadaLineGraph province="NL" /> : <Box></Box>}
+          {province !== null ? (
+            <CanadaLineGraph
+              province={provinceTwoLetters[provinces.indexOf(province)]}
+            />
+          ) : (
+            <Box></Box>
+          )}
         </Center>
       </Box>
     </Box>
