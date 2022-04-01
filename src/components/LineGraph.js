@@ -142,7 +142,8 @@ const LineGraph = (props) => {
     return <Box></Box>;
   } else {
     return (
-      <Box boxSize={"100%"}>
+      <Box w={"100%"} border="2px"
+        borderColor="gray.100" borderRadius="md" pt={5} mt={5}>
         {displayCards()}
         <Line options={options} data={data} />
       </Box>

@@ -51,7 +51,8 @@ const GlobalMap = () => {
         return <Box></Box>
     }else{
       return (
-        <Box boxSize={"100%"}>
+        <Box boxSize={"100%"} border="2px"
+        borderColor="gray.100" borderRadius="md">
           <Chart
             chartType="GeoChart"
             data={data}

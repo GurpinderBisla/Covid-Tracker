@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import DataCard from "../components/DataCard";
 import LineGraph from "../components/LineGraph";
 import GlobalMap from "../components/GlobalMap";
+import Footer from "../components/Footer";
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
@@ -107,7 +108,7 @@ const GlobalCountry = () => {
         Global Status{" "}
       </Heading>
 
-      <Center w="100vw">
+      <Center>
         <HStack m={[5, 10]}>
           <Flex alignContent="flex-start">
             <Box display="flex" alignItems="baseline">
@@ -160,6 +161,7 @@ const GlobalCountry = () => {
           <GlobalMap />
         </Box>
       </Center>
+      <Footer />
     </>
   );
 };
