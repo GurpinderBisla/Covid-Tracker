@@ -1,6 +1,8 @@
 import Header from "../components/Header";
 import axios from "axios";
 import LineGraph from "../components/LineGraph";
+import Footer from "../components/Footer";
+
 
 import { Center, Grid, Box, Heading } from "@chakra-ui/layout";
 import { Select, Button } from "@chakra-ui/react";
@@ -46,14 +48,29 @@ const GlobalCompare = () => {
       setCompare("Confirmed");
     }
   };
+  
+  const footer = ()=>{
+    let first = document.getElementById("firstSelect");
+    let second = document.getElementById("secondSelect");
+    
+    if(first!=null && second!=null){
+      if(first.value === "none" && second.value === "none"){
+        return (<Box pos="fixed" bottom="0" w="100%">
+          <Footer />
+        </Box>);
+      }else{
+        return <Footer />;
+      }
+    }
+  };
 
   return (
-    <div>
+    <>
       <Header />
       <Heading align="center" m={[2, 5]}>
         Compare Countries
       </Heading>
-      <Center w="100vw">
+      <Center>
         <Box display="flex" alignItems="center" m={[2, 10]}>
           <label>Compare using: </label>
           <Select id="compareSelect" maxW="100px">
@@ -108,7 +125,8 @@ const GlobalCompare = () => {
           />
         </Box>
       </Grid>
-    </div>
+      {footer()}
+    </>
   );
 };
 
