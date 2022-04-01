@@ -138,7 +138,7 @@ const LineGraph = (props) => {
     }
   }, [props.country, props.compare]);
 
-  if (data === null || props.country === "United States of America") {
+  if (data === null) {
     return <Box></Box>;
   } else {
     return (
