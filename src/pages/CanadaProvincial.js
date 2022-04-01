@@ -6,6 +6,8 @@ import { WrapItem, Wrap, Flex, Center, Heading } from "@chakra-ui/react";
 import BarGraph from "../components/BarGraph";
 import { Box, VStack } from "@chakra-ui/layout";
 import Map from "../components/Map";
+import Footer from "../components/Footer";
+
 
 const blue = "blue.200";
 const red = "red.400";
@@ -40,6 +42,7 @@ const CanadaProvincial = () => {
   }, []);
 
   return (
+    <>
     <Box>
       <Header />
 
@@ -54,7 +57,7 @@ const CanadaProvincial = () => {
           <Wrap spacing="24px" justify="space-evenly">
             <WrapItem>
               <DataCard
-                name="cases"
+                name="Cases"
                 data={stats.cases}
                 newData={stats.new_cases}
                 bgColor={blue}
@@ -62,7 +65,7 @@ const CanadaProvincial = () => {
             </WrapItem>
             <WrapItem>
               <DataCard
-                name="deaths"
+                name="Deaths"
                 data={stats.deaths}
                 newData={stats.new_deaths}
                 bgColor={red}
@@ -78,7 +81,7 @@ const CanadaProvincial = () => {
             </WrapItem>
             <WrapItem>
               <DataCard
-                name="recoveries"
+                name="Recoveries"
                 data={stats.recoveries}
                 newData={stats.new_recoveries}
                 bgColor={green}
@@ -87,8 +90,8 @@ const CanadaProvincial = () => {
           </Wrap>
         </Flex>
 
-        <Center pg={10} mg={10}>
-          <VStack boxSize="75vw" spacing={10} marginTop={5}>
+        <Center>
+          <VStack w={"75vw"} spacing={10} marginTop={5}>
             <BarGraph />
             <Heading> Active Cases </Heading>
             <Map />
@@ -96,6 +99,8 @@ const CanadaProvincial = () => {
         </Center>
       </Box>
     </Box>
+    <Footer />
+    </>
   );
 };
 

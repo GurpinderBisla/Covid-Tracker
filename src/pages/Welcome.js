@@ -2,7 +2,6 @@ import { Button } from "@chakra-ui/button";
 import { Flex, Center, VStack, HStack, Heading } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
 
-
 /**
  * Component that renders the first page the user sees, lets them
  * pick between canadian stats vs global
@@ -10,8 +9,13 @@ import { Link } from "react-router-dom";
  */
 const Welcome = () => {
   return (
-    <VStack bgImage="url('https://images.unsplash.com/photo-1647960611306-575d35715bf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2665&q=80')" bgPosition="centre" bgSize="auto" bgRepeat="no-repeat"> 
-      <Heading pt={5} size="3xl" letterSpacing="tighter">
+    <VStack
+      bgImage="url('https://images.unsplash.com/photo-1647960611306-575d35715bf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2665&q=80')"
+      bgPosition="centre"
+      bgSize="auto"
+      bgRepeat="no-repeat"
+    >
+      <Heading pt={5} size="3xl" letterSpacing="tighter" m={10}>
         {" "}
         Another Covid Tracker{" "}
       </Heading>
@@ -20,16 +24,16 @@ const Welcome = () => {
         Centers the content vertically and horizontally, pretty long
         winded, most likely a better way to do this exists 
       */}
-      <Center h="100vh">
-        <HStack>
+      <Center h="77.5vh">
+        <HStack color="white">
           <Flex alignContent="flex-start">
             <Link to="/canada/provincial">
-              <Button size="lg" variant="ghost">
+              <Button size="lg" variant="solid" colorScheme="blue" m={10}>
                 Canadian Stats
               </Button>
             </Link>
             <Link to="/global/countrystats">
-              <Button size="lg" variant="ghost">
+              <Button size="lg" variant="solid" colorScheme="blue" m={10}>
                 Global Stats
               </Button>
             </Link>
