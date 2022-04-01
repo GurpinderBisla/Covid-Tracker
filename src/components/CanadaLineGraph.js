@@ -72,7 +72,7 @@ const CanadaLineGraph = (props) => {
     return <Box></Box>;
   } else {
     return (
-      <Box boxSize="100%">
+      <Box boxSize="85%">
         <Line options={options} data={data} />
       </Box>
     );
