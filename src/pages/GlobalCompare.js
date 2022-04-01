@@ -13,6 +13,7 @@ const GlobalCompare = () => {
   const [secondCountry, setSecondCountry] = useState();
   const [compare, setCompare] = useState("Confirmed");
 
+
   const changeCountryOne = () => {
     const select = document.getElementById("firstSelect").value;
     setFirstCountry(select);
@@ -65,7 +66,7 @@ const GlobalCompare = () => {
       </Center>
 
       <Grid templateColumns="repeat(2, 1fr)" gap={6} m={[2, 3]}>
-        <Box p={[5, 1]}>
+        <Box p={[5, 10]}>
           <label>Select Country</label>
           <Select id="firstSelect">
             <option value={"none"}></option>
@@ -86,7 +87,7 @@ const GlobalCompare = () => {
             cards={true}
           />
         </Box>
-        <Box p={[5, 1]}>
+        <Box p={[5, 10]}>
           <label>Select Country</label>
           <Select id="secondSelect">
             <option value={"none"}></option>
