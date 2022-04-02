@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import CanadaProvincial from "./CanadaProvincial.js";
+import GlobalCountry from "./GlobalCountry.js";
 
-describe("CanadaProvincial", () => {
+describe("GlobalCountry", () => {
   it("should display cumulative cases", async () => {
     render(
       <MemoryRouter>
-        <CanadaProvincial />
+        <GlobalCountry />
       </MemoryRouter>
     );
     const casesElement = await screen.getByTestId("Cases");

@@ -122,7 +122,7 @@ const GlobalCountry = () => {
 
       <Flex padding={3} justify="center">
         <Wrap spacing="24px" justify="space-evenly">
-          <WrapItem>
+          <WrapItem data-testid="Cases">
             <DataCard
               data={totalCases}
               name="Total Cases"
