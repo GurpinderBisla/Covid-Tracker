@@ -41,6 +41,7 @@ const Map = () => {
   return (
     <Box boxSize={"100%"}>
       <Chart
+        testid="map"
         chartType="GeoChart"
         data={data}
         options={options}
