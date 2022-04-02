@@ -5,6 +5,7 @@ import { Select } from "@chakra-ui/select";
 import axios from "axios";
 import GeneralDataCard from "../components/GeneralDataCard";
 import CanadaLineGraph from "../components/CanadaLineGraph";
+import Footer from "../components/Footer";
 
 const provinces = [
   "Canada",
@@ -148,6 +149,8 @@ const CanadaVaccine = () => {
           )}
         </Center>
       </Box>
+
+      <Footer />
     </Box>
   );
 };
