@@ -15,7 +15,7 @@ const Welcome = () => {
       bgSize="auto"
       bgRepeat="no-repeat"
     >
-      <Heading pt={5} size="3xl" letterSpacing="tighter" m={10}>
+      <Heading pt={5} size="3xl" letterSpacing="tighter" m={10} data-testid="welcome-page">
         {" "}
         Another Covid Tracker{" "}
       </Heading>

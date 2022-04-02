@@ -1,15 +1,15 @@
 import {render,screen, fireEvent, waitFor} from '@testing-library/react';
 import { MemoryRouter } from "react-router";
-import Map from './Map.js';
+import BarGraph from './BarGraph.js';
 
-describe("Map", () => {
-    it("Display actives cases when hovering over princes", async () => {
+describe("BarGraph", () => {
+    it("Display cumulative cases when hovering over provinces", async () => {
       render(
         <MemoryRouter>
-          <Map />
+          <Bargraph />
         </MemoryRouter>
       );
-      fireEvent.mouseOver(await screen.getByRole("Chart"));
+      fireEvent.mouseOver(await screen.getByRole("BarGraph"));
       await waitFor(() => screen.getByText("data"));
       expect(data).toBeDefined();
     });

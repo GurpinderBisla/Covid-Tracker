@@ -1,15 +1,15 @@
 import {render,screen, fireEvent, waitFor} from '@testing-library/react';
 import { MemoryRouter } from "react-router";
-import Map from './Map.js';
+import DataCard from './DatCard.js';
 
-describe("Map", () => {
-    it("Display actives cases when hovering over princes", async () => {
+describe("DataCard", () => {
+    it("Display covid stats when the website is first loaded", async () => {
       render(
         <MemoryRouter>
-          <Map />
+          <DataCard />
         </MemoryRouter>
       );
-      fireEvent.mouseOver(await screen.getByRole("Chart"));
+      fireEvent.mouseOver(await screen.getByRole("DataGraph"));
       await waitFor(() => screen.getByText("data"));
       expect(data).toBeDefined();
     });

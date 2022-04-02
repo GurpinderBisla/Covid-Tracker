@@ -20,7 +20,8 @@ const Header = () => {
       position="sticky"
       bgColor="rgb(49, 52, 122)"
     >
-      <Link to="/">
+     <div id="useless"/>
+      <Link to="/" data-testid="logo">
         <Image src={covidlogo} alt="covid website logo" w='100px' />
       </Link>
       <Link to="/">
@@ -45,7 +46,7 @@ const Header = () => {
  */
 const createMenu = (menuName, menuItems) => {
   return (
-    <Menu>
+    <Menu data-testid="menu">
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
         {menuName}
       </MenuButton>
