@@ -37,19 +37,23 @@ const Map = () => {
     };
     makeMap();
   }, []);
-
-  return (
-    <Box boxSize={"100%"}>
+  
+  if(data===null){
+    return <Box></Box>;
+  }else{
+    return (
+    <Box boxSize={"100%"} border="2px"
+        borderColor="gray.100" borderRadius="md">
       <Chart
         testid="map"
         chartType="GeoChart"
         data={data}
         options={options}
-        //make this private
         mapsApiKey={process.env.GOOGLE_KEY}
       />
     </Box>
   );
+  }
 };
 
 export default Map;

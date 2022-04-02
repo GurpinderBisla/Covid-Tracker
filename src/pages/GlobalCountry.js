@@ -1,6 +1,9 @@
 import Header from "../components/Header";
 import DataCard from "../components/DataCard";
 import LineGraph from "../components/LineGraph";
+import GlobalMap from "../components/GlobalMap";
+import Footer from "../components/Footer";
+import countries from "./countries";
 
 import { Button } from "@chakra-ui/button";
 import axios from "axios";
@@ -20,20 +23,8 @@ const GlobalCountry = () => {
 
   const [country, setCountry] = useState();
   const [isGlobal, setIsGlobal] = useState(true);
-  const [countryArray, setCountryArray] = useState([]);
   const [newCases, setNewCases] = useState(0);
   const [newDeaths, setNewDeaths] = useState(0);
-
-  useEffect(() => {
-    axios
-      .get("https://api.covid19api.com/summary")
-      .then((result) => {
-        let arr = [];
-        result.data.Countries.map((elem) => arr.push(elem.Country));
-        setCountryArray(arr);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   useEffect(() => {
     if (country === "Global" || country === undefined) {
@@ -83,13 +74,17 @@ const GlobalCountry = () => {
   const displayLineGraph = () => {
     if (!isGlobal) {
       return (
-        <LineGraph
-          country={country}
-          name={country}
-          compare={"Confirmed"}
-          p={[5, 10]}
-          cards={false}
-        />
+        <Center>
+        <Box w={"75vw"}>
+          <LineGraph
+            country={country}
+            name={country}
+            compare={"Confirmed"}
+            p={[5, 0]}
+            cards={false}
+          />
+        </Box>
+      </Center>
       );
     }
   };
@@ -102,7 +97,7 @@ const GlobalCountry = () => {
         Global Status{" "}
       </Heading>
 
-      <Center w="100vw">
+      <Center>
         <HStack m={[5, 10]}>
           <Flex alignContent="flex-start">
             <Box display="flex" alignItems="baseline">
@@ -111,7 +106,7 @@ const GlobalCountry = () => {
               </Box>
               <Select id="select">
                 <option value={"Global"}>Global</option>
-                {countryArray.map((country) => (
+                {countries.map((country) => (
                   <option value={country} key={country}>
                     {country}
                   </option>
@@ -145,9 +140,17 @@ const GlobalCountry = () => {
           </WrapItem>
         </Wrap>
       </Flex>
+      {displayLineGraph()}
+      <Heading align="center" m={[5, 10]}>
+        {" "}
+        Global Total Status{" "}
+      </Heading>
       <Center>
-        <Box boxSize={"75vw"}>{displayLineGraph()}</Box>
+        <Box w={"75vw"} padding={3}>
+          <GlobalMap />
+        </Box>
       </Center>
+      <Footer />
     </>
   );
 };

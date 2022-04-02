@@ -1,27 +1,18 @@
 import Header from "../components/Header";
-import axios from "axios";
 import LineGraph from "../components/LineGraph";
+import Footer from "../components/Footer";
+import countries from "./countries";
+
 
 import { Center, Grid, Box, Heading } from "@chakra-ui/layout";
 import { Select, Button } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const GlobalCompare = () => {
-  const [countryArray, setCountryArray] = useState([]);
   const [firstCountry, setFirstCountry] = useState();
   const [secondCountry, setSecondCountry] = useState();
   const [compare, setCompare] = useState("Confirmed");
 
-  useEffect(() => {
-    axios
-      .get("https://api.covid19api.com/summary")
-      .then((result) => {
-        let arr = [];
-        result.data.Countries.map((elem) => arr.push(elem.Country));
-        setCountryArray(arr);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   const changeCountryOne = () => {
     const select = document.getElementById("firstSelect").value;
@@ -41,14 +32,29 @@ const GlobalCompare = () => {
       setCompare("Confirmed");
     }
   };
+  
+  const footer = ()=>{
+    let first = document.getElementById("firstSelect");
+    let second = document.getElementById("secondSelect");
+    
+    if(first!=null && second!=null){
+      if(first.value === "none" && second.value === "none"){
+        return (<Box pos="fixed" bottom="0" w="100%">
+          <Footer />
+        </Box>);
+      }else{
+        return <Footer />;
+      }
+    }
+  };
 
   return (
-    <div>
+    <>
       <Header />
       <Heading align="center" m={[2, 5]}>
         Compare Countries
       </Heading>
-      <Center w="100vw">
+      <Center>
         <Box display="flex" alignItems="center" m={[2, 10]}>
           <label>Compare using: </label>
           <Select id="compareSelect" maxW="100px">
@@ -64,7 +70,7 @@ const GlobalCompare = () => {
           <label>Select Country</label>
           <Select id="firstSelect">
             <option value={"none"}></option>
-            {countryArray.map((country) => (
+            {countries.map((country) => (
               <option value={country} key={country}>
                 {country}
               </option>
@@ -85,7 +91,7 @@ const GlobalCompare = () => {
           <label>Select Country</label>
           <Select id="secondSelect">
             <option value={"none"}></option>
-            {countryArray.map((country) => (
+            {countries.map((country) => (
               <option value={country} key={country}>
                 {country}
               </option>
@@ -103,7 +109,8 @@ const GlobalCompare = () => {
           />
         </Box>
       </Grid>
-    </div>
+      {footer()}
+    </>
   );
 };
 
