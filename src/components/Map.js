@@ -42,7 +42,6 @@ const Map = () => {
     return <Box></Box>;
   } else {
     return (
-<<<<<<< HEAD
     <Box boxSize={"100%"} border="2px"
         borderColor="gray.100" borderRadius="md">
       <Chart
@@ -54,23 +53,6 @@ const Map = () => {
       />
     </Box>
   );
-=======
-      <Box
-        boxSize={"100%"}
-        border="2px"
-        borderColor="gray.100"
-        borderRadius="md"
-      >
-        <Chart
-          chartType="GeoChart"
-          data={data}
-          options={options}
-          mapsApiKey={process.env.GOOGLE_KEY}
-          role="Chart"
-        />
-      </Box>
-    );
->>>>>>> 6bb62229eb89428506c0854c37b8774da77dd7db
   }
 };
 
