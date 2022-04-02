@@ -93,6 +93,7 @@ const CanadaProvincial = () => {
             <VStack w={"75vw"} spacing={10} marginTop={5}>
               <BarGraph />
               <Heading> Active Cases </Heading>
+              <div id="useless" />
               <Map />
             </VStack>
           </Center>

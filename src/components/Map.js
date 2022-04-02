@@ -37,21 +37,26 @@ const Map = () => {
     };
     makeMap();
   }, []);
-  
-  if(data===null){
+
+  if (data === null) {
     return <Box></Box>;
-  }else{
+  } else {
     return (
-    <Box boxSize={"100%"} border="2px"
-        borderColor="gray.100" borderRadius="md">
-      <Chart
-        chartType="GeoChart"
-        data={data}
-        options={options}
-        mapsApiKey={process.env.GOOGLE_KEY}
-      />
-    </Box>
-  );
+      <Box
+        boxSize={"100%"}
+        border="2px"
+        borderColor="gray.100"
+        borderRadius="md"
+      >
+        <Chart
+          chartType="GeoChart"
+          data={data}
+          options={options}
+          mapsApiKey={process.env.GOOGLE_KEY}
+          role="Chart"
+        />
+      </Box>
+    );
   }
 };
 
