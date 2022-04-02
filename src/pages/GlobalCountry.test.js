@@ -13,3 +13,25 @@ describe("GlobalCountry", () => {
     expect(casesElement).toBeInTheDocument();
   });
 });
+
+//Feature 1: Data card
+describe('GlobalCountry',()=>{
+    it("should render the data cards", async ()=>{
+      <MemoryRouter>
+      render(<GlobalCountry/>)
+      </MemoryRouter>
+  
+      expect(await screen.findByTitle("cardData"));
+    })
+  })
+
+//Feature 2: Map
+describe('GlobalCountry',()=>{
+    it("should render the map", async ()=>{
+      <MemoryRouter>
+      render(<GlobalCountry/>)
+      </MemoryRouter>
+  
+      expect(await screen.findByTitle("Map"));
+    })
+  })
